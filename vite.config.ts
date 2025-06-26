@@ -4,7 +4,7 @@ import { assetpackPlugin } from "./scripts/assetpack-vite-plugin";
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/pixi-test/',
+  // base: '/pixi-test/',
   build: {
     outDir: 'docs',
   },
