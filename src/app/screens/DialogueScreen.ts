@@ -16,11 +16,9 @@ export class DialogueScreen extends BaseScreen {
 
 		this.dialogueA = new Container();
 		this.addChild(this.dialogueA);
-		this.dialogueA.y = engine().renderer.height * 0.4;
 
 		this.dialogueB = new Container();
 		this.addChild(this.dialogueB);
-		this.dialogueB.y = engine().renderer.height * 0.6;
 
 		const customParser: LoaderParser = {
 			name: 'parameteredImage',
@@ -106,7 +104,8 @@ export class DialogueScreen extends BaseScreen {
 			if (emojiMatch) {
 				const emojiId = emojiMatch[1];
 				const emojiTexture = Texture.from(emojiId);
-      	if (!emojiTexture) continue;
+      			if (!emojiTexture) continue;
+
 				const emoji = new Sprite(Texture.from(emojiId));
 				emoji.anchor.set(0, 0.5);
 				emoji.x = horizontalDisplacement;
@@ -138,7 +137,6 @@ export class DialogueScreen extends BaseScreen {
 		if (this.currentLine % 2 == 0) {
 			dialogueContainer.x = 0;
 			targetX = screenWidth * 0.05;
-
 		}
 		else {
 			dialogueContainer.x = screenWidth;
@@ -157,5 +155,12 @@ export class DialogueScreen extends BaseScreen {
 				this.showDialogueLine(this.dialogue[++this.currentLine]);
 			}, 2000);
 		}
+	}
+
+	public resize(width: number, height: number) {
+		super.resize(width, height);
+
+		this.dialogueA.y = height * 0.4;
+		this.dialogueB.y = height * 0.6;
 	}
 }

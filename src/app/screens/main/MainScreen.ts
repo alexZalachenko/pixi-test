@@ -56,12 +56,14 @@ export class MainScreen extends Container {
     this.mainContainer.x = centerX;
     this.mainContainer.y = centerY;
 
-    this.cardsButton.y = height * 0.9;
-    this.cardsButton.x = width * 0.4;
-    this.dialogueButton.y = height * 0.9;
-    this.dialogueButton.x = width * 0.5;
-    this.fireButton.y = height * 0.9;
-    this.fireButton.x = width * 0.6;
+    this.cardsButton.y = height * 0.35;
+    this.cardsButton.x = centerX;
+
+    this.dialogueButton.y = height * 0.5;
+    this.dialogueButton.x = centerX;
+
+    this.fireButton.y = height * 0.65;
+    this.fireButton.x = centerX;
   }
 
   public async show(): Promise<void> {

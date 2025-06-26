@@ -6,11 +6,12 @@ import { engine } from "../getEngine";
 import { Button } from "..//ui/Button";
 import { MainScreen } from "./main/MainScreen";
 
-/** The screen that holds the app */
 export class BaseScreen extends Container {
   public static assetBundles = ["minimalUI"];
 
   private fpsText: Text;
+  private titleText: Text;
+  private backButton: Button;
   protected paused = false;
 
   constructor(screenTitle: string) {
@@ -26,28 +27,25 @@ export class BaseScreen extends Container {
     });
     this.addChild(this.fpsText);
 
-    let title = new Text({
+    this.titleText = new Text({
       text: screenTitle,
       style: {
         fill: 'white',
         fontSize: 24,
         fontWeight: 'bold',
-        align: 'center',
       }
     });
-    this.addChild(title);
-    title.x = engine().renderer.width * 0.5;
-    title.y = engine().renderer.height * 0.1;
+    this.titleText.anchor.set(0.5);
+    this.addChild(this.titleText);
 
-    let backButton = new Button({
+    this.backButton = new Button({
           text: "Back",
           width: 140,
           height: 100,
     });
-    backButton.onPress.connect(() => {engine().navigation.showScreen(MainScreen)});
-    backButton.x = engine().renderer.width * 0.9;
-    backButton.y = engine().renderer.height * 0.9;
-    this.addChild(backButton);
+    this.backButton.anchor.set(1);
+    this.backButton.onPress.connect(() => {engine().navigation.showScreen(MainScreen)});
+    this.addChild(this.backButton);
   }
 
   public update(time: Ticker) {
@@ -64,5 +62,22 @@ export class BaseScreen extends Container {
   public async resume() {
     this.interactiveChildren = true;
     this.paused = false;
+  }
+
+  public resize(width: number, height: number) {
+    const centerX = width * 0.5;
+    const centerY = height * 0.5;
+
+    this.x = 0;
+    this.y = 0;
+
+    this.titleText.x = centerX;
+    this.titleText.y = centerY * 0.1;
+
+    this.fpsText.x = 20;
+    this.fpsText.y = 20;
+
+    this.backButton.x = width - 50;
+    this.backButton.y = height - 50;
   }
 }

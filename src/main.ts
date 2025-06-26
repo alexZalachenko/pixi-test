@@ -1,7 +1,4 @@
 import { setEngine } from "./app/getEngine";
-// import { CardsScreen } from "./app/screens/CardsScreen";
-// import { DialogueScreen } from "./app/screens/DialogueScreen";
-// import { FireScreen } from "./app/screens/FireScreen";
 import { LoadScreen } from "./app/screens/LoadScreen";
 import { MainScreen } from "./app/screens/main/MainScreen";
 import { CreationEngine } from "./engine/engine";
@@ -22,6 +19,5 @@ setEngine(engine);
   });
 
   await engine.navigation.showScreen(LoadScreen);
-  // await engine.navigation.showScreen(DialogueScreen);
   await engine.navigation.showScreen(MainScreen);
 })();
