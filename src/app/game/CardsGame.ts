@@ -1,7 +1,7 @@
 import { Container } from 'pixi.js';
 import gsap from 'gsap';
 import { cardsConfig as config } from './config';
-import { createNumCards } from './cardsFactory';
+import { createNumCards } from './CardsFactory';
 
 
 /** A class that handles all of gameplay based features. */

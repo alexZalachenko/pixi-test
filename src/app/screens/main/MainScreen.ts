@@ -8,7 +8,6 @@ import { CardsScreen } from "../CardsScreen";
 import { DialogueScreen } from "../DialogueScreen";
 import { FireScreen } from "../FireScreen";
 
-
 export class MainScreen extends Container {
   public static assetBundles = ["main", "minimalUI"];
 
@@ -47,7 +46,7 @@ export class MainScreen extends Container {
     this.fireButton.onPress.connect(() => {engine().navigation.showScreen(FireScreen)});
     this.addChild(this.fireButton);
 
-    engine().renderer.background.color = '#1E1E1E';
+    engine().renderer.background.color = "#1E1E1E";
   }
 
   public resize(width: number, height: number) {
@@ -66,7 +65,6 @@ export class MainScreen extends Container {
   }
 
   public async show(): Promise<void> {
-
     const elementsToAnimate = [
       this.cardsButton,
       this.dialogueButton,
